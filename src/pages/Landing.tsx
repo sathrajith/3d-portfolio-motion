@@ -97,13 +97,15 @@ const projects = [
     ],
   },
   {
-    title: "Resume Builder",
+    title: "cookurresume.com",
     description: "Developed a dynamic resume builder application with a React.js frontend enabling users to create, customize, and export professional resumes.",
     tags: ["React.js", "Java", "Spring Boot", "MySQL"],
     image: null,
     gradient: "from-violet-500/20 to-purple-500/20",
     borderGlow: "group-hover:shadow-violet-500/20",
     icon: <FileText className="h-6 w-6" />,
+    liveUrl: "#",
+    sourceUrl: "#",
     highlights: [
       "Built a Spring Boot backend with REST APIs to handle user data persistence, template management, and PDF generation.",
       "Implemented real-time preview functionality allowing users to see live changes as they fill in resume sections.",
@@ -117,6 +119,8 @@ const projects = [
     gradient: "from-amber-500/20 to-orange-500/20",
     borderGlow: "group-hover:shadow-amber-500/20",
     icon: <Palette className="h-6 w-6" />,
+    liveUrl: "#",
+    sourceUrl: "#",
     highlights: [
       "Implemented smooth navigation, animated UI components, and mobile-first design for an optimal user experience across devices.",
     ],
@@ -203,7 +207,7 @@ export default function Landing() {
             </span>
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-              Sath Rajith
+              Sathrajith
             </span>
           </motion.h1>
 
@@ -426,14 +430,28 @@ export default function Landing() {
                       </div>
 
                       <div className="flex items-center gap-3 text-sm">
-                        <span className="flex items-center gap-1.5 text-muted-foreground hover:text-cyan-400 transition-colors cursor-pointer">
-                          <ExternalLink className="h-3.5 w-3.5" />
-                          Live Demo
-                        </span>
-                        <span className="flex items-center gap-1.5 text-muted-foreground hover:text-cyan-400 transition-colors cursor-pointer">
-                          <Github className="h-3.5 w-3.5" />
-                          Source
-                        </span>
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-muted-foreground hover:text-cyan-400 transition-colors"
+                          >
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            Live Demo
+                          </a>
+                        )}
+                        {project.sourceUrl && (
+                          <a
+                            href={project.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-muted-foreground hover:text-cyan-400 transition-colors"
+                          >
+                            <Github className="h-3.5 w-3.5" />
+                            Source
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -522,7 +540,7 @@ export default function Landing() {
           <div className="flex items-center gap-2">
             <img src={logo} alt="Logo" width={24} height={24} className="rounded" />
             <span className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Sath Rajith. All rights reserved.
+              © {new Date().getFullYear()} Sathrajith. All rights reserved.
             </span>
           </div>
           <div className="flex items-center gap-4">
