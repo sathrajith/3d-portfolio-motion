@@ -13,6 +13,9 @@ import {
   Zap,
   ChevronRight,
   Mail,
+  FileText,
+  Users,
+  Database,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -80,69 +83,78 @@ function AnimatedSection({
 // --- Project Data ---
 const projects = [
   {
-    title: "Nebula Dashboard",
-    description: "Real-time analytics dashboard with interactive data visualizations, dark mode, and responsive design.",
-    tags: ["React", "TypeScript", "D3.js", "Tailwind"],
+    title: "Customer Relationship Management (CRM) System",
+    description: "Architected and developed a full-stack CRM web application to streamline client and lead management workflows.",
+    tags: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
     image: null,
     gradient: "from-cyan-500/20 to-blue-500/20",
     borderGlow: "group-hover:shadow-cyan-500/20",
-    icon: <Layers className="h-6 w-6" />,
+    icon: <Users className="h-6 w-6" />,
+    highlights: [
+      "Built RESTful APIs with Spring Boot for customer/lead CRUD operations, search by name, ID, or email, and role-based access control.",
+      "Implemented task scheduling with reminders, automated report generation, and email integration for seamless communication.",
+      "Secured the application with username/password authentication and session management, ensuring data integrity and role-based permissions.",
+    ],
   },
   {
-    title: "CryptoTracker",
-    description: "Live cryptocurrency tracking platform with portfolio management, price alerts, and historical charts.",
-    tags: ["Next.js", "GraphQL", "WebSocket", "Prisma"],
+    title: "Resume Builder",
+    description: "Developed a dynamic resume builder application with a React.js frontend enabling users to create, customize, and export professional resumes.",
+    tags: ["React.js", "Java", "Spring Boot", "MySQL"],
     image: null,
     gradient: "from-violet-500/20 to-purple-500/20",
     borderGlow: "group-hover:shadow-violet-500/20",
-    icon: <Cpu className="h-6 w-6" />,
+    icon: <FileText className="h-6 w-6" />,
+    highlights: [
+      "Built a Spring Boot backend with REST APIs to handle user data persistence, template management, and PDF generation.",
+      "Implemented real-time preview functionality allowing users to see live changes as they fill in resume sections.",
+    ],
   },
   {
-    title: "Artisan Marketplace",
-    description: "E-commerce platform connecting independent creators with buyers, featuring AI-powered recommendations.",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    title: "Personal Portfolio",
+    description: "Designed and developed a responsive personal portfolio website using React.js showcasing projects, skills, and contact information.",
+    tags: ["React.js", "CSS3", "JavaScript"],
     image: null,
     gradient: "from-amber-500/20 to-orange-500/20",
     borderGlow: "group-hover:shadow-amber-500/20",
-    icon: <Globe className="h-6 w-6" />,
-  },
-  {
-    title: "CodeFlow IDE",
-    description: "Browser-based code editor with real-time collaboration, AI code completion, and integrated terminal.",
-    tags: ["Monaco", "WebSocket", "Python", "Docker"],
-    image: null,
-    gradient: "from-emerald-500/20 to-teal-500/20",
-    borderGlow: "group-hover:shadow-emerald-500/20",
-    icon: <Code2 className="h-6 w-6" />,
-  },
-  {
-    title: "PixelPerfect Design",
-    description: "Design-to-code platform that converts Figma designs into production-ready React components with AI.",
-    tags: ["Figma API", "GPT-4", "React", "Tailwind"],
-    image: null,
-    gradient: "from-pink-500/20 to-rose-500/20",
-    borderGlow: "group-hover:shadow-pink-500/20",
     icon: <Palette className="h-6 w-6" />,
-  },
-  {
-    title: "SwiftDeploy",
-    description: "One-click deployment platform for full-stack applications with built-in monitoring and scaling.",
-    tags: ["Kubernetes", "AWS", "Terraform", "Go"],
-    image: null,
-    gradient: "from-sky-500/20 to-indigo-500/20",
-    borderGlow: "group-hover:shadow-sky-500/20",
-    icon: <Zap className="h-6 w-6" />,
+    highlights: [
+      "Implemented smooth navigation, animated UI components, and mobile-first design for an optimal user experience across devices.",
+    ],
   },
 ];
 
 // --- Skills Data ---
-const skills = [
-  { name: "React / Next.js", level: 95, color: "from-cyan-400 to-blue-500" },
-  { name: "TypeScript", level: 92, color: "from-blue-400 to-indigo-500" },
-  { name: "Node.js", level: 88, color: "from-emerald-400 to-teal-500" },
-  { name: "UI/UX Design", level: 85, color: "from-violet-400 to-purple-500" },
-  { name: "Python", level: 80, color: "from-amber-400 to-orange-500" },
-  { name: "DevOps / Cloud", level: 75, color: "from-rose-400 to-pink-500" },
+const skillCategories = [
+  {
+    name: "Languages",
+    icon: <Code2 className="h-4 w-4" />,
+    color: "from-cyan-400 to-blue-500",
+    skills: ["Java", "JavaScript", "C"],
+  },
+  {
+    name: "Backend",
+    icon: <Zap className="h-4 w-4" />,
+    color: "from-emerald-400 to-teal-500",
+    skills: ["Spring Boot", "RESTful API", "Maven"],
+  },
+  {
+    name: "Frontend",
+    icon: <Palette className="h-4 w-4" />,
+    color: "from-violet-400 to-purple-500",
+    skills: ["React.js", "HTML", "CSS"],
+  },
+  {
+    name: "Database",
+    icon: <Database className="h-4 w-4" />,
+    color: "from-amber-400 to-orange-500",
+    skills: ["MySQL", "PostgreSQL", "MongoDB"],
+  },
+  {
+    name: "Tool",
+    icon: <Code2 className="h-4 w-4" />,
+    color: "from-rose-400 to-pink-500",
+    skills: ["Git", "GitHub", "Postman"],
+  },
 ];
 
 export default function Landing() {
@@ -318,26 +330,31 @@ export default function Landing() {
                   Technical Skills
                 </h3>
                 <div className="space-y-5">
-                  {skills.map((skill, i) => (
+                  {skillCategories.map((category, i) => (
                     <motion.div
-                      key={skill.name}
+                      key={category.name}
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.1 * i }}
+                      transition={{ duration: 0.4, delay: 0.05 * i }}
                     >
-                      <div className="flex justify-between mb-1.5">
-                        <span className="text-sm font-medium">{skill.name}</span>
-                        <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-cyan-500/20 to-violet-500/20 flex items-center justify-center text-cyan-400">
+                          {category.icon}
+                        </div>
+                        <span className="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                          {category.name}
+                        </span>
                       </div>
-                      <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: 0.2 * i, ease: "easeOut" }}
-                          className={`h-full rounded-full bg-gradient-to-r ${skill.color}`}
-                        />
+                      <div className="flex flex-wrap gap-2 pl-9">
+                        {category.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-secondary/40 border border-border/30 text-muted-foreground hover:text-foreground hover:border-cyan-500/40 transition-all duration-300"
+                          >
+                            {skill}
+                          </span>
+                        ))}
                       </div>
                     </motion.div>
                   ))}
@@ -378,9 +395,23 @@ export default function Landing() {
                         {project.title}
                       </h3>
 
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                         {project.description}
                       </p>
+
+                      {project.highlights && (
+                        <ul className="space-y-1.5 mb-4">
+                          {project.highlights.map((highlight, idx) => (
+                            <li
+                              key={idx}
+                              className="text-xs text-muted-foreground/80 leading-relaxed flex items-start gap-2"
+                            >
+                              <span className="mt-1.5 h-1 w-1 rounded-full bg-cyan-400 shrink-0" />
+                              {highlight}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.tags.map((tag) => (
