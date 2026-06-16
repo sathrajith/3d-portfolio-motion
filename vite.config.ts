@@ -85,11 +85,8 @@ export default defineConfig({
     // Keep exclude empty to let Vite pre-bundle all deps properly
     exclude: [],
   },
-  // Performance hints
+  // Freebuff requires HMR to remain disabled to prevent module loading issues
   server: {
-    // Keep HMR on, but disable full-screen error overlay
-    hmr: {
-      overlay: false,
-    },
+    hmr: false,
   },
 });
