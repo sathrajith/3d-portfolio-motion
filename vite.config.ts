@@ -76,9 +76,14 @@ export default defineConfig({
       'react-dom',
       'react-router',
       '@convex-dev/auth/react',
+      // Pre-bundle Three.js ecosystem for proper ESM compatibility
+      'three',
+      '@react-three/fiber',
+      '@react-three/drei',
+      'three-stdlib',
     ],
-    // Exclude heavy optional dependencies for faster dev server start
-    exclude: ['three', '@react-three/fiber', '@react-three/drei'],
+    // Keep exclude empty to let Vite pre-bundle all deps properly
+    exclude: [],
   },
   // Performance hints
   server: {
